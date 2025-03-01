@@ -1,0 +1,123 @@
+{% extends 'webapp/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<style>
+    body {
+        background: url("{% static 'webapp/images/services.jpeg' %}") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .services-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+        background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white for readability */
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.4rem;
+        color: #1900ff;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        background-color: #ffffff;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #023e8a;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #000000;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .laundry-bg {
+        background-color: #caf0f8;
+        border-radius: 10px;
+        padding: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .service-title {
+            font-size: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+        }
+    }
+</style>
+
+<div class="services-container">
+    <h2 class="service-title">Our Laundry Services</h2>
+    <div class="row g-1">
+        <div class="col-md-4">
+            <div class="card h-100 laundry-bg">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Wash & Fold</h5>
+                    <p class="card-text">Convenient washing and folding for your daily laundry needs.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 laundry-bg">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Dry Cleaning</h5>
+                    <p class="card-text">Professional dry cleaning to keep your garments fresh and crisp.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 ">
+            <div class="card h-100 laundry-bg">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Ironing</h5>
+                    <p class="card-text">Get your clothes perfectly ironed and wrinkle-free.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 ">
+            <div class="card h-100 laundry-bg">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Express Laundry</h5>
+                    <p class="card-text">Fast laundry service for when you need your clothes cleaned in a hurry.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 laundry-bg">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Blanket Cleaning</h5>
+                    <p class="card-text">Deep cleaning for your blankets, comforters, and large items.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

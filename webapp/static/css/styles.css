@@ -1,0 +1,140 @@
+/* General Styles */
+body {
+    background-color: #D9E2EC;
+    color: #004F9E;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #004F9E !important;
+}
+.navbar .nav-link {
+    color: white !important;
+}
+.navbar .nav-link.bg-danger {
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+
+/* Hero Section */
+.hero {
+    background-color: #00AEEF;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+/* Services Section */
+.services {
+    background-image: url('../images/background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 50px 20px;
+    position: relative;
+}
+.services h2 {
+    color: #004F9E;
+}
+
+.cta {
+    background-color: #A8E6CF;
+    color: #004F9E;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    background-color: #004F9E;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+.footer ul {
+    padding: 0;
+    list-style: none;
+}
+.footer ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Signup Page */
+.container {
+    margin-top: 100px;
+}
+.card {
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+
+}
+.card h3 {
+    color: #004F9E;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.badge {
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+/* place pickup page */
+/* 🌊 Hero Section */
+
+
+.hero-section h1 {
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hero-section .btn {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* 📝 Form Section */
+.form-section {
+    background-color: #f7f9fc;
+}
+
+.pickup-form {
+    max-width: 700px;
+    margin: auto;
+}
+
+/* 🧼 How It Works */
+.how-it-works .step {
+    transition: transform 0.3s ease-in-out;
+    background-color: #fff;
+}
+
+.how-it-works .step:hover {
+    transform: scale(1.1);
+}
+
+/* ❓ FAQ Section */
+.accordion-button {
+    background-color: #16C47F;
+    color: white;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #F93827;
+    color: white;
+}
+
+/* 🎨 General Styling */
+h2 {
+    font-weight: 600;
+}

@@ -1,0 +1,104 @@
+{% extends 'administrator/base.html' %}
+
+{% block title %}All Orders{% endblock %}
+
+{% block content %}
+
+<style>
+    .search-container {
+        margin-bottom: 20px;
+    }
+
+    .search-input {
+        width: 250px;
+    }
+
+    .btn-primary {
+        background-color: #16C47F;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #13a369;
+    }
+
+    .badge {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+    }
+
+    tr:hover {
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container-fluid py-4">
+    <h2 class="mb-4 fw-bold text-dark">All Orders</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Search Bar -->
+    <div class="search-container d-flex justify-content-center">
+        <form method="GET" class="d-flex">
+            <input type="text" name="order_id" class="form-control me-2 search-input" placeholder="Search by Order ID" value="{{ request.GET.order_id }}">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Payment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr onclick="window.location.href='{% url 'order_detail' order.order_id %}'">
+                    <td>{{ order.order_id }}</td>
+                    <td>KES {{ order.order_total }}</td>
+                    <td>
+                        <span class="badge 
+                            {% if order.order_status == 'Pending' %}bg-warning
+                            {% elif order.order_status == 'In Progress' %}bg-info
+                            {% elif order.order_status == 'Completed' %}bg-success
+                            {% endif %}">
+                            {{ order.order_status }}
+                        </span>
+                    </td>
+                    <td class="text-center">
+                        {% if order.payment %}
+                            {% if order.payment.payment_status %}
+                                <span class="badge bg-success">Paid</span>
+                            {% else %}
+                                <span class="badge bg-danger">Unpaid</span>
+                            {% endif %}
+                        {% else %}
+                            <span class="badge bg-secondary">No Payment</span>
+                        {% endif %}
+                    </td>
+                    
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No orders found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

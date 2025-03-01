@@ -1,0 +1,156 @@
+{% extends 'webapp/base.html' %}
+
+{% load static %}
+
+{% block title %}Place Pickup - Fua Chap Chap{% endblock %}
+
+{% block content %}
+<style>
+    .hero-section {
+        background-image: url("{% static 'webapp/images/services.jpeg' %}");
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0;
+        border-radius: 0 0 40px 40px;
+        position: relative;
+        color: white;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        border-radius: 0 0 40px 40px;
+    }
+
+    .hero-section .container {
+        position: relative;
+        z-index: 1; /* Ensure text stays above the overlay */
+    }
+</style>
+
+<div class="place-pickup-page">
+    <!-- Hero Section -->
+    <section class="hero-section text-center py-2">
+        <div class="container">
+            <h1 class="display-4">Schedule Your Laundry Pickup in Seconds!</h1>
+            <p class="lead">Fast, affordable, and fresh laundry services at your doorstep.</p>
+            <a href="#pickup-form" class="btn btn-warning btn-lg mt-3">Place Your Pickup</a>
+        </div>
+    </section>
+
+    <!-- Pickup Form Section -->
+    <section id="pickup-form" class="form-section py-5 mt-1">
+        <div class="container">
+            <h2 class="text-center mb-4">Pickup Request Form</h2>
+            <form class="pickup-form shadow p-4 rounded bg-light" action="{% url 'pickup_order' %}" method="POST">
+                {% csrf_token %}
+                <div class="row g-3">
+                    <div class="col-12">
+                        <select class="form-select" required name="pickup_address">
+                            <option selected disabled>Select Pickup Address</option>
+                            <option>Chiromo</option>
+                            <option>Kejani</option>
+                            <option>Qwetu</option>
+                        </select>
+                    </div>
+                   
+                    <div class="col-12">
+                        <select class="form-select" required name="service_type">
+                            <option selected disabled>Select Service Type</option>
+                            <option>Wash & Fold</option>
+                            <option>Dry Cleaning</option>
+                            <option>Ironing</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <textarea class="form-control" rows="3" placeholder="Special Instructions (Optional)"></textarea>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success btn-lg">Submit Request</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works py-5 text-center bg-light">
+        <div class="container">
+            <h2 class="mb-4">How It Works</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="step shadow p-4 rounded">
+                        <img src="{% static 'webapp/images/pick_up.jpeg' %}" alt="Step 1" class="mb-3" width="80">
+                        <h5>1. Place Pickup</h5>
+                        <p>Schedule online in just a few clicks.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step shadow p-4 rounded">
+                        <img src="{% static 'webapp/images/clean.png' %}" alt="Step 2" class="mb-3" width="80">
+                        <h5>2. We Collect & Clean</h5>
+                        <p>Your laundry is handled with utmost care.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step shadow p-4 rounded">
+                        <img src="{% static 'webapp/images/deliver.jpeg' %}" alt="Step 3" class="mb-3" width="80">
+                        <h5>3. We Deliver</h5>
+                        <p>Fresh clothes delivered back to your doorstep.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            How long does it take to get my clothes back?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Most orders are completed within 48 hours. Express services are available.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            How do I pay for the service?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Payment can be made via cash, card, or mobile money upon delivery.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            Is my laundry safe with you?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Absolutely! We take great care to ensure your laundry is handled properly.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

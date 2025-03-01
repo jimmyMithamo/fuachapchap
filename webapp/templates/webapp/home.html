@@ -1,0 +1,51 @@
+{% extends 'webapp/base.html' %}
+{% load static %}
+
+{% block title %}Laundry Services{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Fresh & Clean Laundry Services</h1>
+        <p>Reliable, fast, and affordable laundry services at your doorstep.</p>
+        <a href="{% url 'services' %}" class="btn btn-light btn-lg">Explore Services</a>
+    </div>
+
+    <!-- Services Section -->
+    <div class="container-fluid services text-center" id="services">
+        <h2 class="fw-bolder">Our Services</h2>
+        <div class="row mt-2 g-2">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Wash & Fold</h4>
+                        <p class="card-text">Get your clothes washed and folded with care.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Dry Cleaning</h4>
+                        <p class="card-text">Premium dry cleaning services for all fabrics.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Pickup & Delivery</h4>
+                        <p class="card-text">Convenient pickup and delivery at your preferred time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="cta">
+        <h2>Get Fresh Laundry Today!</h2>
+        <p>Contact us for fast and professional laundry services.</p>
+        <a href="#contact" class="btn btn-primary btn-lg">Contact Us</a>
+    </div>
+{% endblock %}
