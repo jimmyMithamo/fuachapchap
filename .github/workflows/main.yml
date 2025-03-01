@@ -1,26 +1,27 @@
-name: Deploy via FTPS
-
-on:
+name: Deploy to cpanel
+on: 
   push:
     branches:
-      - main  # Change this to your deployment branch
-
+      - main
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
+    runs-on:  ubuntu-24.04
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Deploy via FTPS
-        uses: lukas-hetzenecker/ftp-deploy-action@v1
+      - uses: actions/checkout@v4
         with:
-          server: ${{ secrets.SFTP_HOST }}
-          username: ${{ secrets.SFTP_USERNAME }}
+          fetch-depth: 2
+      # Deploy to cPanel
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp.mithames.co.ke
+          username: fuachapchap@mithames.co.ke
           password: ${{ secrets.FTPS_PASSWORD }}
+          protocol: ftps
           port: 21
-          protocol: ftps  # Secure FTPS
-          local-dir: "./fuachapchap"  # Adjust this path
-          server-dir: "/fuachapchap"  # Adjust this path
-          dangerous-clean-slate: false  # Set to true if you want to delete old files
+          dangerous-clean-slate	: false
+          timeout: 12000000
+          server-dir: /fuachapchap/
+          
+      
