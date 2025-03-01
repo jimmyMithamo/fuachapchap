@@ -26,55 +26,26 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h4 class="card-title">My Account</h4>
-                    <p><strong>Name:</strong> {{ user.get_full_name }}</p>
+        
+                    <!-- Display Name -->
+                    <p><strong>First Name:</strong> {{ user.first_name }}</p>
+                    <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+        
+                    <!-- Email -->
                     <p><strong>Email:</strong> {{ user.email }}</p>
+        
+                    <!-- Phone Number -->
+                    <p><strong>Phone:</strong> {{ user.profile.phone_number|default:"Not Provided" }}</p>
+        
+                    <!-- Date Joined -->
                     <p><strong>Joined:</strong> {{ user.date_joined|date:"F d, Y" }}</p>
+        
+                    <!-- Logout Button -->
                     <a href="{% url 'logout_view' %}" class="btn btn-danger w-100">Logout</a>
                 </div>
             </div>
         </div>
-
-        <!-- Orders Section -->
-        <div class="col-lg-8 mt-2 mb-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h4 class="card-title">Order History</h4>
-                    {% if orders %}
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Order ID</th>
-                                        <th>Status</th>
-                                        <th>Total Amount</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for order in orders %}
-                                        <tr class="clickable-row" onclick="window.location='{% url 'order' order.order_id %}'">
-                                            <td>#{{ order.order_id }}</td>
-                                            <td>
-                                                <span class="badge 
-                                                    {% if order.order_status == 'Pending' %} bg-warning 
-                                                    {% elif order.order_status == 'Completed' %} bg-info 
-                                                    {% elif order.order_status == 'In Progress' %} bg-success
-                                                    {% else %} bg-secondary {% endif %}">
-                                                    {{ order.order_status }}
-                                                </span>
-                                            </td>
-                                            <td>Ksh {{ order.order_total }}</td>
-                                        </tr>
-                                    {% endfor %}
-                                </tbody>
-                                
-                            </table>
-                        </div>
-                    {% else %}
-                        <p class="text-muted">No orders found.</p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
     </div>
+        
 </div>
 {% endblock %}

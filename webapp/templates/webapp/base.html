@@ -58,6 +58,7 @@
                     {# Check if user is authenticated #}
                     {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link text-dark" href="{% url 'account' %}">Account</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="{% url 'orders' %}">Orders</a></li>
                         <li class="nav-item"><a class="nav-link text-dark text-center bg-danger" href="{% url 'logout_view' %}">Logout</a></li>
                     {% else %}
                     <li class="nav-item"><a class="nav-link text-dark text-center bg-success" href="{% url 'login_view' %}">Login</a></li>
