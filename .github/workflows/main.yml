@@ -18,7 +18,7 @@ jobs:
           server: ftp.mithames.co.ke
           username: fuachapchap@mithames.co.ke
           password: ${{ secrets.FTPS_PASSWORD }}
-          protocol: ftps
+          protocol: ftp
           port: 21
           timeout: 1200000
           server-dir: /fuachapchap/
