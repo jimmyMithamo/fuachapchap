@@ -13,7 +13,7 @@ jobs:
           fetch-depth: 2
       # Deploy to cPanel
       - name: FTP-Deploy-Action
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.mithames.co.ke
           username: fuachapchap@mithames.co.ke

@@ -14,8 +14,8 @@ SECRET_KEY = 'django-insecure-098fv8$7re71@&nlkdrz3#_r38q4ih(&k35+p@x%sn_hz8m(zs
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "74720cfbcda114885399f5f9e6d21a60.serveo.net"]
-CSRF_TRUSTED_ORIGINS = ["https://74720cfbcda114885399f5f9e6d21a60.serveo.net"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "68f36385571f533dd597825079bf157a.serveo.net"]
+CSRF_TRUSTED_ORIGINS = ["https://68f36385571f533dd597825079bf157a.serveo.net"]
 # Application definition
 
 INSTALLED_APPS = [

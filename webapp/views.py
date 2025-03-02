@@ -200,6 +200,9 @@ def order_detail(request, order_id):
         order.order_status = status
         order.order_total = price
         order.save()
+        payment = order.payment
+        payment.payment_amount = price
+        payment.save()
 
         messages.success(request, "Order updated successfully!")
         return redirect('order_detail', order_id=order_id)
@@ -268,14 +271,13 @@ def initiate_stk_push(request, order_id):
     account_reference = 'reference'
     transaction_desc = 'Description'
     print("Initiating STK Push...")  # Debugging
-    callback_url = f"https://74720cfbcda114885399f5f9e6d21a60.serveo.net/callback/{order_id}/"
+    callback_url = f"https://68f36385571f533dd597825079bf157a.serveo.net/callback/{order_id}/"
     print(callback_url)  # Debugging
     response = cl.stk_push(phone_number, amount, account_reference, transaction_desc, callback_url)
-    print(response)  # Debugging
     if response:
         print(response)
         messages.success(request, 'Payment initiated successfully')
-    return redirect('order', order_id=order_id)
+    return redirect('orders')
 
 
 @csrf_exempt 
@@ -313,12 +315,14 @@ def mpesa_callback(request, order_id):
                     elif item["Name"] == "PhoneNumber":
                         phone_number = item["Value"]
 
-                # Find order by amount and phone number (assuming match exists)
+                # Find order by amount and phone number
                 order = Order.objects.filter(order_total=amount, order_id=order_id).first()
                 print("Order found:", order)  # Debugging
                 if order:
-                    order.payment.payment_status = "True"  # Set payment status to False
-                    order.save()
+                    payment = order.payment
+                    print("Payment found:", payment)  # Debugging
+                    payment.payment_status = True  # Set payment status to true
+                    payment.save()
                     print("Order updated successfully")
                     print("M-Pesa Receipt:", mpesa_receipt)
                     print(order.payment.payment_status)
